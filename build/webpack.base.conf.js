@@ -28,8 +28,10 @@ module.exports = {
         loader: 'babel',
         include: [resolve('src')],
       },
-
-
+      {
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!autoprefixer-loader?{browsers:["last 2 version"]}!sass-loader?outputStyle=expanded',
+      },
     ],
   }
 }

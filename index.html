@@ -11,92 +11,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <link rel="author" type="text/html" href="https://plus.google.com/+MuazKhan">
-        <meta name="author" content="Muaz Khan">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <style>
-            #videos-containe {
-              width: 600px;
-            }
-            video {
-                -moz-transition: all 1s ease;
-                -ms-transition: all 1s ease;
-                -o-transition: all 1s ease;
-                -webkit-transition: all 1s ease;
-                transition: all 1s ease;
-                vertical-align: top;
-                width: 100%;
-            }
-            input {
-                border: 1px solid #d9d9d9;
-                border-radius: 1px;
-                font-size: 2em;
-                margin: .2em;
-                width: 30%;
-            }
-            select {
-                border: 1px solid #d9d9d9;
-                border-radius: 1px;
-                height: 50px;
-                margin-left: 1em;
-                margin-right: -12px;
-                padding: 1.1em;
-                vertical-align: 6px;
-                width: 18%;
-            }
-            .setup {
-                border-bottom-left-radius: 0;
-                border-top-left-radius: 0;
-                font-size: 102%;
-                height: 47px;
-                margin-left: -9px;
-                margin-top: 8px;
-                position: absolute;
-            }
-            p { padding: 1em; }
-            li {
-                border-bottom: 1px solid rgb(189, 189, 189);
-                border-left: 1px solid rgb(189, 189, 189);
-                padding: .5em;
-            }
-        </style>
+        <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/nkemblooioekjnpfekmjhpgkackcajhg">
     </head>
     <body>
-        <article>
-            <header style="text-align: center;">
-                <h1>
-                    WebRTC Screen Sharing
-                </h1>
-            </header>
-            <!-- just copy this <section> and next script -->
-            <section class="experiment">
-                <section>
-                    <span>
-                        Private ?? <a href="/screen-sharing/" target="_blank" title="Open this link for private screen sharing!"><code><strong id="unique-token">#123456789</strong></code></a>
-                    </span>
-                    <input type="text" id="user-name" placeholder="Your Name">
-                    <button id="share-screen" class="setup">Share Your Screen</button>
-                </section>
-                <table style="width: 100%;" id="rooms-list"></table>
-                <div id="videos-container"></div>
-            </section>
-            <!-- <script src='https://cdn.webrtc-experiment.com/socket.io.js'></script> -->
-            <!-- <script src="https://cdn.webrtc-experiment.com/getScreenId.js"></script> -->
-            <script src="https://cdn.bootcss.com/socket.io/0.9.0/socket.io.min.js"></script>
-            <section class="experiment">
-                <ol>
-                    <li>
-                        Chrome?
-                        <a href="https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk" target="_blank">Store</a>
-                        / <a href="https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture">Source Code</a>
-                        /
-                        <button onclick="!!navigator.webkitGetUserMedia && !!window.chrome && !!chrome.webstore && !!chrome.webstore.install && chrome.webstore.install('https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk', function() {location.reload();})" id="install-button" style="font-size:inherit; padding-bottom:0;">Click to Install</button>
-                    </li>
-
-                    <li>
-                        Firefox? Please use version 52 or higher. Also use HTTPs.
-                    </li>
-                </ol>
-            </section>
+      <article>
+        <section class="experiment">
+          <section>
+              <span>
+                  Private ?? <a href="/screen-sharing/" target="_blank" title="Open this link for private screen sharing!"><code><strong id="unique-token">#123456789</strong></code></a>
+              </span>
+              <input type="text" id="user-name" placeholder="Your Name">
+              <button id="share-screen" class="setup">开始分享</button>
+          </section>
+          <table style="width: 100%;" id="rooms-list"></table>
+          <div class="videos-container"></div>
+        </section>
+        <!-- <script src='https://cdn.webrtc-experiment.com/socket.io.js'></script> -->
+        <!-- <script src="https://cdn.webrtc-experiment.com/getScreenId.js"></script> -->
+        <script src="https://cdn.bootcss.com/socket.io/0.9.0/socket.io.min.js"></script>
+        <section class="experiment">
+          <ol>
+            <li>
+              <button onclick="!!navigator.webkitGetUserMedia && !!window.chrome && !!chrome.webstore && !!chrome.webstore.install && chrome.webstore.install('https://chrome.google.com/webstore/detail/ajhifddimkapgcifgcodmmfdlknahffk', function() {location.reload();})" id="install-button" style="font-size:inherit; padding-bottom:0;">点击安装插件</button>
+            </li>
+          </ol>
+        </section>
+      </article>
     </body>
 </html>

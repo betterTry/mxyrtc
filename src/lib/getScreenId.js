@@ -14,9 +14,9 @@ getScreenId(function (error, sourceId, screen_constraints) {
 
 (function() {
   window.getScreenId = function(callback) {
-      // for Firefox:
-      // sourceId == 'firefox'
-      // screen_constraints = {...}
+    // for Firefox:
+    // sourceId == 'firefox'
+    // screen_constraints = {...}
     if (!!navigator.mozGetUserMedia) {
       callback(null, 'firefox', {
           video: {
@@ -77,16 +77,16 @@ getScreenId(function (error, sourceId, screen_constraints) {
   // 发送 get sourceId的指令;
   function postGetSourceIdMessage() {
     if (!iframe) {
-        loadIFrame(postGetSourceIdMessage);
-        return;
+      loadIFrame(postGetSourceIdMessage);
+      return;
     }
     if (!iframe.isLoaded) {
-        setTimeout(postGetSourceIdMessage, 100);
-        return;
+      setTimeout(postGetSourceIdMessage, 100);
+      return;
     }
     // 向iframe发送消息;
     iframe.contentWindow.postMessage({
-        captureSourceId: true
+      captureSourceId: true
     }, '*');
   }
 
@@ -96,27 +96,27 @@ getScreenId(function (error, sourceId, screen_constraints) {
   window.getScreenConstraints = function(callback) {
     loadIFrame(function() {
       getScreenId(function(error, sourceId, screen_constraints) {
-          if(!screen_constraints) {
-              screen_constraints = {
-                  video: true
-              };
-          }
+        if(!screen_constraints) {
+            screen_constraints = {
+                video: true
+            };
+        }
 
-          callback(error, screen_constraints.video);
+        callback(error, screen_constraints.video);
       });
     });
   };
 
   function loadIFrame(loadCallback) {
     if (iframe) {
-        loadCallback();
-        return;
+      loadCallback();
+      return;
     }
 
     iframe = document.createElement('iframe');
     iframe.onload = function() {
-        iframe.isLoaded = true;
-        loadCallback();
+      iframe.isLoaded = true;
+      loadCallback();
     };
     iframe.src = 'https://www.webrtc-experiment.com/getSourceId/'; // https://wwww.yourdomain.com/getScreenId.html
     iframe.style.display = 'none';
@@ -126,21 +126,21 @@ getScreenId(function (error, sourceId, screen_constraints) {
   window.getChromeExtensionStatus = function(callback) {
     // for Firefox:
     if (!!navigator.mozGetUserMedia) {
-        callback('installed-enabled');
-        return;
+      callback('installed-enabled');
+      return;
     }
 
     window.addEventListener('message', onIFrameCallback);
 
     function onIFrameCallback(event) {
-        if (!event.data) return;
+      if (!event.data) return;
 
-        if (event.data.chromeExtensionStatus) {
-            callback(event.data.chromeExtensionStatus);
+      if (event.data.chromeExtensionStatus) {
+        callback(event.data.chromeExtensionStatus);
 
-            // this event listener is no more needed
-            window.removeEventListener('message', onIFrameCallback);
-        }
+        // this event listener is no more needed
+        window.removeEventListener('message', onIFrameCallback);
+      }
     }
 
     setTimeout(postGetChromeExtensionStatusMessage, 100);
